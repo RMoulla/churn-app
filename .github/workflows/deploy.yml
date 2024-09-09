@@ -26,7 +26,7 @@ jobs:
       env:
         HEROKU_API_KEY: HRKU-77b4629c-066e-4637-b716-c1682328194f
       run: |
-        heroku stack:set container --app <your-heroku-app-name>  # Change la stack de l'application
+        heroku stack:set container --app churn-app1
 
     - name: Deploy to Heroku
       env:
