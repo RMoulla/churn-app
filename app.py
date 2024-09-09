@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, render_template
 import joblib
 import numpy as np
+import os
 
 
 # Charger le modèle de régression logistique sauvegardé
@@ -37,6 +38,6 @@ def predict():
 
     return jsonify({'churn_prediction': result})
 
-# Fonction pour lancer le serveur Flask dans un thread
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5012, debug=True) 
+    port = int(os.environ.get('PORT', 5000))  # Utiliser le port défini par Heroku ou par défaut 5000
+    app.run(host='0.0.0.0', port=port)
