@@ -1,43 +1,37 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify
 import joblib
-import numpy as np
-import os
-
-
-# Charger le modèle de régression logistique sauvegardé
-model = joblib.load('churn_model.pkl')
+import pandas as pd
 
 # Initialiser l'application Flask
 app = Flask(__name__)
 
+# Charger le modèle
+model = joblib.load('churn-model.pkl')
+
+# Définir la route pour la page d'accueil
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return "Bienvenue sur l'API de prédiction de churn !"
 
-# Définir la route principale pour la prédiction
+# Définir la route pour effectuer une prédiction
 @app.route('/predict', methods=['POST'])
 def predict():
-    data = request.get_json()
+    try:
+        # Récupérer les données envoyées dans la requête
+        data = request.get_json()
 
-    age = float(request.form['Age'])
-    account_manager = int(request.form['Account_Manager'])
-    years = float(request.form['Years'])
-    num_sites = int(request.form['Num_Sites'])
+        # Transformer les données en DataFrame
+        input_data = pd.DataFrame([data])
 
-    # Créer un tableau numpy pour les données de prédiction
-    features = np.array([[age, account_manager, years, num_sites]])
+        # Effectuer la prédiction avec le modèle
+        prediction = model.predict(input_data)
 
-    # Ajouter une constante pour l'intercept
-    features = np.insert(features, 0, 1, axis=1)
+        # Retourner le résultat sous forme de JSON
+        return jsonify({'churn_prediction': int(prediction[0])})
+    
+    except Exception as e:
+        return jsonify({'error': str(e)})
 
-    # Effectuer la prédiction
-    prediction = model.predict(features)
-
-    # Convertir la prédiction en un format compréhensible
-    result = int(prediction[0] > 0.5)
-
-    return jsonify({'churn_prediction': result})
-
+# Lancer l'application
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))  # Utiliser le port défini par Heroku ou par défaut 5000
-    app.run(host='0.0.0.0', port=port)
+    app.run(debug=True)
