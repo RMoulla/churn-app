@@ -1,12 +1,9 @@
-name: CI Pipeline for Model Update
+name: Deploy to Heroku
 
 on:
   push:
-    paths:
-      - churn-model*.pkl  # Détecte les changements dans les fichiers de modèle
-      - data/**            # Détecte les changements dans les données
     branches:
-      - main  # Surveille la branche `main`
+      - main  # Ce pipeline s'exécutera à chaque push sur la branche `main`
 
 jobs:
   build:
@@ -23,14 +20,12 @@ jobs:
 
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Build Docker image
-      run: docker build -t churn-app .
-
     - name: Deploy to Heroku
+      env:
+        HEROKU_API_KEY: HRKU-77b4629c-066e-4637-b716-c1682328194f
       run: |
         heroku container:login
-        heroku container:push web --app <your-heroku-app-name>
-        heroku container:release web --app <your-heroku-app-name>
+        heroku container:push web --app churn-app
+        heroku container:release web --app churn-app
