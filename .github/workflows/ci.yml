@@ -9,8 +9,6 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
 
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
@@ -32,19 +30,4 @@ jobs:
      # run: |
      #   pytest test_app.py
 
-    # Étape pour installer Heroku CLI
-    - name: Install Heroku CLI
-      run: |
-        curl https://cli-assets.heroku.com/install.sh | sh
-        
-    # Configurer Git pour utiliser Heroku API
-    - name: Set up Heroku remote
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: |
-        git remote add heroku https://heroku:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/${{ secrets.HEROKU_APP_NAME }}.git
 
-    # Pousser vers Heroku
-    - name: Deploy to Heroku
-      run: |
-        git push heroku master:mai
