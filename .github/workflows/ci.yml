@@ -35,11 +35,13 @@ jobs:
       run: |
         curl https://cli-assets.heroku.com/install.sh | sh
         
-    # Étape pour déployer sur Heroku
-    - name: Deploy to Heroku
+    # Configurer Git pour utiliser Heroku API
+    - name: Set up Heroku remote
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
       run: |
-        git remote add heroku https://git.heroku.com/${{ secrets.HEROKU_APP_NAME }}.git
-        git push heroku master
+        git remote add heroku https://heroku:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/${{ secrets.HEROKU_APP_NAME }}.git
+
+    # Pousser vers Heroku
+    - name: Deploy to Heroku
+      run: git push heroku master
