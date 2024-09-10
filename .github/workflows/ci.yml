@@ -30,6 +30,11 @@ jobs:
       run: |
         pytest test_app.py
 
+    # Étape pour installer Heroku CLI
+    - name: Install Heroku CLI
+      run: |
+        curl https://cli-assets.heroku.com/install.sh | sh
+        
     # Étape pour déployer sur Heroku
     - name: Deploy to Heroku
       env:
