@@ -4,7 +4,7 @@ from sklearn.ensemble import RandomForestClassifier
 import joblib
 
 # Chargement des données
-data = pd.read_csv('data/churn_data.csv')
+data = pd.read_csv('data/customer_churn.csv')
 
 # Préparation des features et target
 X = data.drop('Churn', axis=1)
