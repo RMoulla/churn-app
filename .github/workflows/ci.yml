@@ -37,4 +37,4 @@ jobs:
         HEROKU_APP_NAME: ${{ churn-cd }}
       run: |
         git remote add heroku https://git.heroku.com/${{ secrets.HEROKU_APP_NAME }}.git
-        git push heroku main
+        git push heroku master
