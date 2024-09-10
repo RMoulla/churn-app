@@ -21,4 +21,5 @@ model = RandomForestClassifier()
 model.fit(X_train, y_train)
 
 # Sauvegarde du modèle dans un fichier .pkl
+print("Sauvegarde du modèle...")
 joblib.dump(model, 'churn-model.pkl')
