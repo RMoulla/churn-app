@@ -6,7 +6,7 @@ import pandas as pd
 app = Flask(__name__)
 
 # Charger le modèle
-model = joblib.load('churn-model.pkl')
+# model = joblib.load('churn-model.pkl')
 
 # Définir la route pour la page d'accueil
 @app.route('/')
