@@ -7,7 +7,7 @@ import joblib
 data = pd.read_csv('data/customer_churn.csv')
 
 # Filtrer les 5 variables numériques et la variable cible 'Churn'
-numeric_data = data[['Age', 'Account_Manager', 'Years', 'Num_Sites', 'Churn']]
+numeric_data = data[['Age', 'Total_Purchase', 'Account_Manager', 'Years', 'Num_Sites', 'Churn']]
 
 # Préparation des features (X) et de la cible (y)
 X = numeric_data.drop('Churn', axis=1)
