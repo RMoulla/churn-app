@@ -22,6 +22,7 @@ def predict():
         # Récupérer les données du formulaire (POST)
         data = {
             'Age': request.form['Age'],
+            'Total_Purchase': request.form['Total_Purchase'],
             'Account_Manager': request.form['Account_Manager'],
             'Years': request.form['Years'],
             'Num_Sites': request.form['Num_Sites']
