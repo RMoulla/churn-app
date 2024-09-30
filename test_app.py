@@ -17,9 +17,10 @@ def test_home(client):
 
 # Test pour la route de prédiction ('/predict')
 def test_prediction(client):
-    # Créer des données d'entrée pour la prédiction
+    # Créer des données d'entrée pour la prédiction (inclure toutes les features)
     data = {
         'Age': 42,
+        'Total_Purchase': 11000,  # Ajout de la feature manquante
         'Account_Manager': 1,
         'Years': 5.5,
         'Num_Sites': 8
