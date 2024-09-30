@@ -23,7 +23,7 @@ jobs:
     # Étape pour entraîner et sauvegarder le modèle
     - name: Train model
       run: |
-        python train.py  # Assurez-vous que ce script crée churn-model.pkl
+        python train.py  
 
     # Étape pour exécuter les tests
     - name: Run tests
