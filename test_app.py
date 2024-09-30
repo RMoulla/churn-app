@@ -20,7 +20,7 @@ def test_prediction(client):
     # Créer des données d'entrée pour la prédiction (inclure toutes les features)
     data = {
         'Age': 42,
-        'Total_Prchase':11100,
+        'Total_Purchase':11100,
         'Account_Manager': 1,
         'Years': 5.5,
         'Num_Sites': 8
