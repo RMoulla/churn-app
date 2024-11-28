@@ -37,7 +37,7 @@ def predict():
         }
 
         # Transformer les données en DataFrame pour la prédiction
-        columns = ['Age', 'Total_Purchase', 'Account_Manager', 'Years', 'Num_Sites']
+        columns = ['Age', 'Account_Manager', 'Years', 'Num_Sites']
         input_data = pd.DataFrame([data], columns=columns)
 
         # Faire la prédiction avec le modèle
