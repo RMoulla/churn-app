@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 import joblib
 
-# Chargement des données
+# Chargement des données 
 data = pd.read_csv('data/customer_churn.csv')
 
 # Filtrer les 5 variables numériques et la variable cible 'Churn'
