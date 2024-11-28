@@ -12,7 +12,7 @@ data_path = os.path.join(base_dir, 'data', 'customer_churn.csv')
 data = pd.read_csv(data_path)
 
 # Préparation des données
-numeric_data = data[['Age', 'Total_Purchase', 'Account_Manager', 'Years', 'Num_Sites', 'Churn']]
+numeric_data = data[['Age', 'Account_Manager', 'Years', 'Num_Sites', 'Churn']]
 X = numeric_data.drop('Churn', axis=1)
 y = numeric_data['Churn']
 
