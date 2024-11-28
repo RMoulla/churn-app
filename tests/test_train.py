@@ -10,9 +10,9 @@ def test_train_model_file_exists():
     )
 
 def test_train_model_loading():
-    """Vérifie que le fichier sauvegardé contient un modèle LogisticRegression"""
+    """Vérifie que le fichier sauvegardé contient un modèle Random Forest"""
     model = joblib.load('churn_model.pkl')
-    assert isinstance(model, LogisticRegression), (
+    assert isinstance(model, RandomForest), (
         "Le fichier churn_model_clean.pkl ne contient pas un modèle LogisticRegression."
     )
 
