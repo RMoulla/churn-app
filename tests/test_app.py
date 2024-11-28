@@ -17,7 +17,6 @@ def test_predict_route_valid(client):
     """Vérifie que la route /predict retourne une prédiction pour des données valides"""
     data = {
         'Age': 45,
-        'Total_Purchase': 5000.0,
         'Account_Manager': 1,
         'Years': 5,
         'Num_Sites': 3
