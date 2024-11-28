@@ -1,7 +1,7 @@
 import os
 import joblib
 import pandas as pd
-from sklearn.linear_model import LogisticRegression
+from sklearn.linear_model import RandomForestClassifier
 
 def test_train_model_file_exists():
     """Vérifie que le fichier churn_model_clean.pkl est créé après exécution de train.py"""
@@ -12,7 +12,7 @@ def test_train_model_file_exists():
 def test_train_model_loading():
     """Vérifie que le fichier sauvegardé contient un modèle Random Forest"""
     model = joblib.load('churn_model.pkl')
-    assert isinstance(model, RandomForest), (
+    assert isinstance(model, RandomForestClassifier), (
         "Le fichier churn_model_clean.pkl ne contient pas un modèle LogisticRegression."
     )
 
