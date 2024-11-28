@@ -32,7 +32,7 @@ def predict():
         data = {
             'Age': int(request.form['Age']),
             'Account_Manager': int(request.form['Account_Manager']),
-            'Years': float(request.form['Years']),
+            'Years': int(request.form['Years']),
             'Num_Sites': int(request.form['Num_Sites'])
         }
 
