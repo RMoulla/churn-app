@@ -7,7 +7,7 @@ import os
 app = Flask(__name__)
 
 # Charger le modèle depuis churn-model.pkl
-model_path = os.path.join(os.path.dirname(__file__), 'churn-model.pkl')
+model_path = os.path.join(os.path.dirname(__file__), 'churn_model.pkl')
 
 try:
     model = joblib.load(model_path)
