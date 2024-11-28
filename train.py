@@ -24,7 +24,7 @@ model = RandomForestClassifier()
 model.fit(X_train, y_train)
 
 # Sauvegarde du modèle dans le dossier data
-model_path = os.path.join(base_dir, 'churn-model.pkl')
+model_path = os.path.join(base_dir, 'churn_model.pkl')
 print("Sauvegarde du modèle...")
 joblib.dump(model, model_path)
 print(f"Modèle sauvegardé dans {model_path}.")
